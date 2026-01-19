@@ -64,6 +64,12 @@
             "owner": "platformio",
             "version": "~0.3.9"
         },
+        "framework-arduino-k210": {
+            "type": "framework",
+            "optional": true,
+            "owner": "kendryte",
+            "version": "~0.2.0"
+        },
         "framework-kendryte-standalone-sdk": {
             "type": "framework",
             "optional": true,
