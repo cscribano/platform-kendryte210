@@ -43,6 +43,13 @@
         "arduino":{
             "package": "framework-maixduino",
             "script": "builder/frameworks/arduino.py"
+        },
+        "arduino-k210":{
+            "package": "framework-arduino-k210",
+            "script": "builder/frameworks/arduino_k210.py",
+            "type": "framework",
+            "optional": true,
+            "url": "https://github.com/kendryte/arduino-k210.git"
         }
     },
     "packages": {
@@ -56,6 +63,12 @@
             "optional": true,
             "owner": "platformio",
             "version": "~0.3.9"
+        },
+        "framework-arduino-k210": {
+            "type": "framework",
+            "optional": true,
+            "owner": "kendryte",
+            "version": "~0.2.0"
         },
         "framework-kendryte-standalone-sdk": {
             "type": "framework",
