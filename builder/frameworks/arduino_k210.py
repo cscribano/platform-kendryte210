@@ -108,11 +108,11 @@ env.Append(
 rtt_lib_dir = join(RTT_PATH, "lib")
 archives = sorted(glob.glob(join(rtt_lib_dir, "*.a")))
 
-# Put archives at the END of the link line (LIBS), and wrap in a group
-# so ld can iterate to resolve cross-archive symbols like entry().
-env.Append(LINKFLAGS=["-Wl,--start-group"])
-env.Append(LINKFLAGS=[env.File(a) for a in archives])
-env.Append(LINKFLAGS=["-Wl,--end-group"])
+if not archives:
+    raise Exception("No RT-Thread archives found in " + rtt_lib_dir)
+
+# Put the actual archives into LIBS (as File nodes so SCons doesn't add -l prefix)
+env.Append(LIBS=[env.File(a) for a in archives])
 
 
 # ------------------------------------------------------------
