@@ -10,6 +10,7 @@ env = DefaultEnvironment()
 FRAMEWORK_DIR = env.PioPlatform().get_package_dir("framework-arduino-k210")
 assert FRAMEWORK_DIR and isdir(FRAMEWORK_DIR)
 SDK_DIR = join(FRAMEWORK_DIR, "cores", "k210", "k210-sdk")
+RT_DIR = join(FRAMEWORK_DIR, "cores", "k210", "rt-thread")
 
 env.SConscript("_bare.py", exports="env")
 
@@ -41,20 +42,24 @@ env.Append(
     CPPPATH = [
         join(FRAMEWORK_DIR, "cores", "k210"),
         join(FRAMEWORK_DIR, "cores", "k210", "k210-hal"),
-        join(FRAMEWORK_DIR, "cores", "k210", "k210-hal", "include"),
-        join(SDK_DIR, "lib", "bsp"),
-        join(SDK_DIR, "lib", "bsp", "include"),
-        join(SDK_DIR, "lib", "drivers"),
-        join(SDK_DIR, "lib", "drivers", "include"),
-        join(SDK_DIR, "lib", "freertos"),
-        join(SDK_DIR, "lib", "freertos", "include"),
-        join(SDK_DIR, "lib", "freertos", "portable"),
-        join(SDK_DIR, "lib", "freertos", "conf"),
-        join(SDK_DIR, "lib", "utils", "include"),
-        join(SDK_DIR, "lib", "nncase"),
-        join(SDK_DIR, "lib", "nncase", "include"),
-        join(SDK_DIR, "lib", "nncase", "runtime"),
-        join(SDK_DIR, "third_party", "xtl", "include")
+        join(SDK_DIR, "bsp"),
+        join(SDK_DIR, "drivers"),
+        join(SDK_DIR, "drivers", "include"),
+        join(SDK_DIR, "nncase"),
+        join(SDK_DIR, "nncase", "include"),
+        join(SDK_DIR, "nncase", "runtime"),
+        join(SDK_DIR, "third_party", "xtl", "include", "xtl"),
+        join(RT_DIR, "bsp"),
+        join(RT_DIR, "include", "CPU"),
+        join(RT_DIR, "include", "DeviceDrivers"),
+        join(RT_DIR, "include", "DeviceDrivers", "drivers"),
+        join(RT_DIR, "include", "DeviceDrivers", "ipc"),
+        join(RT_DIR, "include", "bsp"),
+        join(RT_DIR, "include", "kernel"),
+        join(RT_DIR, "include", "libc", "common"),
+        join(RT_DIR, "include", "libc", "cplusplus"),
+        join(RT_DIR, "include", "libc", "newlib"),
+        join(RT_DIR, "lib"),
     ],
 
     LIBPATH = [
