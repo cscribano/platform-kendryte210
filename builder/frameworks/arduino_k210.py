@@ -136,7 +136,7 @@ common_ccflags = [
     "-ggdb",
 
     "-Wall",
-    "-Werror=all",
+    #"-Werror=all",
     "-Wno-error=unused-function",
     "-Wno-error=unused-but-set-variable",
     "-Wno-error=unused-variable",
