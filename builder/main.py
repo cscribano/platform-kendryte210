@@ -9,12 +9,10 @@ env = DefaultEnvironment()
 platform = env.PioPlatform()
 board = env.BoardConfig()
 
-if platform == "arduino-k210":
-    pfx = "riscv-none-elf-"
-    xpack_bin = "/home/carmelo/k210/xpack-riscv-none-embed-gcc-10.2.0-1.2/bin"
-    env.PrependENVPath("PATH", xpack_bin)
-else:
-    pfx = "riscv64-unknown-elf-"
+pfx = "riscv-none-embed-"
+xpack_bin = "/home/carmelo/k210/xpack-riscv-none-embed-gcc-10.2.0-1.2/bin"
+env.PrependENVPath("PATH", xpack_bin)
+
 
 env.Replace(
     AR=pfx+"ar",
